@@ -1,2 +1,5 @@
 # Ignore test file test_ignore_file.txt
 test_ignore_file.txt
+
+# Ignore the file containing credentials for database access
+credentials.yaml

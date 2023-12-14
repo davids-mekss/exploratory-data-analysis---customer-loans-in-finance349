@@ -1,0 +1,19 @@
+This is a step by step guide of what I did for the CUSTOMER LOANS IN FINANCE
+project, and this guide will help me in future projects
+
+1. First, create a GitHub repo and then clone it to your local machine
+
+    I used git init and git clone <repo-link> to do this
+
+    Then I tested if the connection between my pc and github worked by creating a test file abcdefg.txt, adding it to git repo
+        add a file using git add <filename> or add the entire directory you are working it by using git add .
+    
+
+2. Created a python file for extracting the necessary data for the project
+    file is named db_utils.py
+    created a class (RDSDatabaseConnector) which will have methods for retrieving the data
+
+3. Created a file for storing credentials (credentials.yaml)
+
+4. (IMPORTANT) #TODO Added this file to .gitignore (so that git ignores this file and it does not get pushed to PUBLICLY AVAILABLE GITHUB)
+
