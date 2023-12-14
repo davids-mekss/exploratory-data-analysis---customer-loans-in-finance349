@@ -15,5 +15,13 @@ project, and this guide will help me in future projects
 
 3. Created a file for storing credentials (credentials.yaml)
 
-4. (IMPORTANT) #TODO Added this file to .gitignore (so that git ignores this file and it does not get pushed to PUBLICLY AVAILABLE GITHUB)
+4. (IMPORTANT) Added this file to .gitignore (so that git ignores this file and it does not get pushed to PUBLICLY AVAILABLE GITHUB)
+
+5. Double checked PyYAML package is installed (access it using import yaml, we will use this to load credentials.yaml)
+
+6. Updated db_utils.py script so that it retrieves the credentials from YAML file
+
+
+
+
 
