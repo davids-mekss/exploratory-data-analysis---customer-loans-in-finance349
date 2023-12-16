@@ -1,0 +1,27 @@
+You should do Milestone 3 in its entirety, but for Milestone 4 the df should not have any skew
+transformations since it will lead to inaccurate reporting or columns dropped due to collinearity
+as you may drop a column related to the analysis. 
+
+The dataframe for Milestone 4 should have all columns casted to their datatypes,
+and all nulls handled (including dropping those columns over 50% nulls) but nothing else as we are
+trying to query and analyise the data so need it in the untransformed format.
+An example is in the Finance dataset if you skew transform the cols then the total_amount column wont have
+the actual amount for the loan but a reduced, transformed amount which is not the actual data. 
+
+In short Milestone 3 was to show that you can do all these preparation steps that may be expected of you
+in a job which included the skew transforms and collinearity dropping cols for ML models, but Milestone 4
+is an analysis of the data so doesn't need those exact steps. 
+
+You can make a copy of the df after handing the nulls using df.copy() which you can use for Milestone 4
+or you can load in the raw df and do those specific cleaning steps again to it its up to you!
+
+
+
+Alan — 12/14/2023 10:05 PM
+In milestone 4 it be useful to know which columns you need to use to calculate loss (for non financial )
+
+
+Jared — 12/14/2023 10:11 PM
+I wont give away clear answers 😂
+but you will need the !!!funded_amount_inv!!! and !!!funded_amount!!!  cols for Milestone 4
+which is why you cant drop one of them due to collinearity
