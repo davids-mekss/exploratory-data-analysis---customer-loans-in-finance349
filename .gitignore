@@ -1,2 +1,3 @@
 # Ignore the file containing credentials for database access
 credentials.yaml
+psycopg2_and_sqlalchemy.txt

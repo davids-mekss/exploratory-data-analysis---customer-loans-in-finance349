@@ -1,4 +1,6 @@
 import yaml
+import pandas as pd
+from sqlalchemy import create_engine
 
 
 class RDSDatabaseConnector:     # define docstring which can be found by using help(ClassName)
@@ -30,16 +32,25 @@ class RDSDatabaseConnector:     # define docstring which can be found by using h
         '''
         self.credentials_dictionary = credentials_dictionary
 
-    def load_yaml_file(self):
+    @staticmethod
+    def load_yaml_file():
         '''
         Load database credentials from a YAML file
         '''
-        filename = 'credentials.yaml'
+        with open('credentials.yaml', 'r') as file:
+            credentials = yaml.safe_load(file)
+        return credentials['database']
+    
+    def initialise_sqlalchemy(self):
+        '''
+        Initialise an SQLAlchemy engine using the credentials.
+        '''
+        db_credentials = self.credentials_dictionary
+        db_url = f"postgresql+psycopg2://{db_credentials['RDS_USER']}:{db_credentials['RDS_PASSWORD']}@{db_credentials['RDS_HOST']}:{db_credentials['RDS_PORT']}/{db_credentials['RDS_DATABASE']}"
 
-        with open(filename, 'r') as file:
-            credentials_dictionary = yaml.safe_load(file)
-        return credentials_dictionary
+connector_instance = RDSDatabaseConnector.load_yaml_file()
+print(connector_instance)
 
-connector_instance = RDSDatabaseConnector({})
-loaded_credentials = connector_instance.load_yaml_file()
-print(loaded_credentials)
+
+with engine.execution_options(isolation_level='AUTOCOMMIT').connect() as conn:
+    pass
