@@ -79,16 +79,36 @@ if __name__ == "__main__":
     credentials = load_credentials()
     connector = RDSDatabaseConnector(credentials)   #passing the credentials (loaded in as yaml) as an argument to the RDSDatabaseConnector class
 
+    ########### for development ##############
     # Test query: Select the first 5 rows from the loan_payments table
-    test_query = "SELECT * FROM loan_payments LIMIT 5"
-    test_df = pd.read_sql(test_query, connector.engine)
+    #test_query = "SELECT * FROM loan_payments LIMIT 5"
+    #test_df = pd.read_sql(test_query, connector.engine)
 
     # Display the results for the test query
-    print("Test Query Results:")
-    print(test_df)
+    #print("Test Query Results:")
+    #print(test_df)
+    ################
     
     # Extract data from RDS and save to CSV
     data_df = connector.extract_data_to_dataframe()
     connector.save_dataframe_to_csv(data_df, "loan_payments_data.csv")
 
-   
+#now that we have data saved locally on our machine (loan_payments_data.csv), we can call it directly via a function:
+def load_local_data_to_dataframe(file_path):
+    df = pd.read_csv(file_path)
+    
+    return df
+
+#define the file path (it's in our directory, so just the file name)
+file_path = 'loan_payments_data.csv'
+dataframe = load_local_data_to_dataframe(file_path)
+
+print("Shape of the dataframe:", dataframe.shape)   #.shape returns a tuple with (number_of_rows, number_of_columns)
+# good to get an overview of the data without printing out all of the data
+
+# another good idea is printing out a sample by using the .head() method
+dataframe_head = dataframe.head()   # default is first 5 records
+print("Dataframe head:\n", dataframe_head)
+
+# print out all of the data 
+print(dataframe)

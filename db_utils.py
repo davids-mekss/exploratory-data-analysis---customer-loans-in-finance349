@@ -3,14 +3,13 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-class RDSDatabaseConnector:     # define docstring which can be found by using help(ClassName)
+class RDSDatabaseConnector:
+    # define docstring which can be found by using help(ClassName)
     '''
     A class that connects to an AWS RDS database to retrieve data related to customer loans in finance from the cloud.
 
     Parameters:
     ----------
-    credentionals_dictionary: dict
-        A dictionary containing credentials for accessing the RDS database
  
     Attributes:
     ----------
@@ -22,8 +21,7 @@ class RDSDatabaseConnector:     # define docstring which can be found by using h
 
         Returns:
         -------
-        dict
-            A dictionary containing credentials for accessing the RDS database.
+        
     '''
 
     def __init__(self, credentials_dictionary):
