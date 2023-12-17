@@ -93,7 +93,6 @@ class DataTransform:
         # Convert specified columns from float to int data type to save space
         self.dataframe[columns_for_int_conversion] = self.dataframe[columns_for_int_conversion].astype('int64')
 
-
 ########v1
    # def convert_string_to_date(self, columns_for_date_conversion):
         # Convert specified columns to a correct datetime format
@@ -103,8 +102,9 @@ class DataTransform:
 ######## v2
     def convert_string_to_date(self, columns_for_date_conversion, format = '%b-%Y'):
         for column in columns_for_date_conversion:
-            self.dataframe[columns_for_date_conversion] = self.dataframe[columns_for_date_conversion].apply(lambda x: pd.to_datetime(x + '-01', format = format))
+            self.dataframe[column] = self.dataframe[column].iloc[1:].apply(lambda x: pd.to_datetime(x + '-01', format = format, errors='coerce'))
             # in format '%b-%Y', b stands for abbreviated month name eg Jan and Y stands for 4 digit year eg 1987
+            # added iloc to skip over index 0 which is not data but column names
 
 
 if __name__ == "__main__":
@@ -163,6 +163,9 @@ print("Unique items in column \"term\":", dataframe['term'].unique())
 
 #TODO !!!!!!!!!!!!!!!!!!!!!!!!!!
 #should some columns be categorical
+
+#TODO !!!!!!!!!!!!!!!!!!!!!
+# when converting data types try using .fillna if encounter errors
 
 #TODO
 # issue_date is a string in a format "Jan-2021", we could convert this to a proper data type for a date
